@@ -1,6 +1,4 @@
-# This Repo will be archived at the 24th of Oct 2023
-# Due to the forced 2FA Mumbo Jumbo from GitHub,
-# this Repo has moved to GitLab
+# This Repo has moved to GitLab since 24th of Oct 2023
 # [rootAVD](https://gitlab.com/newbit/rootAVD)
 ### [newbit @ xda-developers](https://forum.xda-developers.com/m/newbit.1350876)
 A Script to...
@@ -14,8 +12,8 @@ A Script to...
 
 ## Install Magisk
 ### Download rootAVD via
-* [Click](https://github.com/newbit1/rootAVD/archive/refs/heads/master.zip)
-* `git clone https://github.com/newbit1/rootAVD.git`
+* [Click](https://gitlab.com/newbit/rootAVD/-/archive/master/rootAVD-master.zip)
+* `git clone https://gitlab.com/newbit/rootAVD.git`
 
 ### Preconditions
 * the AVD is running
@@ -24,19 +22,19 @@ A Script to...
 * `adb shell` will connect to the running AVD
 ### Use Case Examples
 #### on MacOS
-<img src="https://github.com/newbit1/video-files/blob/master/rootAVD_MacOS.gif" width="50%" height="50%"/>
+<img src="https://gitlab.com/newbit/video-files/-/blob/master/rootAVD_MacOS.gif" width="50%" height="50%"/>
 
 #### BlueStacks 4 on MacOS
-<img src="https://github.com/newbit1/video-files/blob/master/rootAVD_MacOS_BlueStacks.gif" width="50%" height="50%"/>
+<img src="https://gitlab.com/newbit/video-files/-/blob/master/rootAVD_MacOS_BlueStacks.gif" width="50%" height="50%"/>
 
 #### on Windows
-<img src="https://github.com/newbit1/video-files/blob/master/rootAVD_Windows.gif" width="50%" height="50%"/>
+<img src="https://gitlab.com/newbit/video-files/-/blob/master/rootAVD_Windows.gif" width="50%" height="50%"/>
 
 #### on Linux
-<img src="https://github.com/newbit1/video-files/blob/master/rootAVD_Linux.gif" width="50%" height="50%"/>
+<img src="https://gitlab.com/newbit/video-files/-/blob/master/rootAVD_Linux.gif" width="50%" height="50%"/>
 
 #### Fake Boot.img on MacOS
-<img src="https://github.com/newbit1/video-files/blob/master/rootAVD_MacOS_FAKEBOOTIMG.gif" width="50%" height="50%"/>
+<img src="https://gitlab.com/newbit/video-files/-/blob/master/rootAVD_MacOS_FAKEBOOTIMG.gif" width="50%" height="50%"/>
 
 ### How to Install ADB (Android SDK Platform-Tools)
 * Open Android Studio -> SDK Manager -> Android SDK -> SDK Tools -> Check on **Android SDK Platform-Tools** -> Apply
@@ -287,7 +285,7 @@ rootAVD.bat system-images\android-25\google_apis_playstore\armeabi-v7a\ramdisk.i
 	* switch again to user 0
 		* open the Magisk App -> Settings -> Multiuser Mode -> **User-Independent** -> reboot AVD
 * Every time you want to Grant Su Permissions, switch to user 0 and then back to 10 `adb shell am switch-user 10`
-* Alternative, you can install the Module [Magisk Single User Mod](https://github.com/newbit1/msum)
+* Alternative, you can install the Module [Magisk Single User Mod](https://gitlab.com/newbit/msum)
 	* and remove all user higher than 0 i.e. `adb shell pm remove-user 13` or `adb shell pm remove-user 10`
 
 ### BlueStacks 4 Notes on MacOs
@@ -300,9 +298,9 @@ rootAVD.bat system-images\android-25\google_apis_playstore\armeabi-v7a\ramdisk.i
 
 ### Links
 * [XDA [GUIDE] Build / Mod AVD Kernel Android 10 / 11 rootAVD [Magisk] [USB passthrough Linux] [Google Play Store API]](https://forum.xda-developers.com/t/guide-build-mod-avd-kernel-android10-x86_64-29-root-magisk-usb-passthrough-linux.4212719)
-* [Inject Android Hardware USB HOST Permissions](https://github.com/newbit1/usbhostpermissons)
+* [Inject Android Hardware USB HOST Permissions](https://gitlab.com/newbit/usbhostpermissons)
 * [XDA [SCRIPT] rootAVD - root your Android Studio Virtual Device emulator with Magisk [Android 12][Linux][Darwin/MacOS][WIN][Google Play Store APIs]](https://forum.xda-developers.com/t/script-rootavd-root-your-android-studio-virtual-device-emulator-with-magisk-android-11-linux-darwin-macos-win-google-play-store-apis.4218123)
-* [rootCROS - A Script to root your Google Chrome OS installed on a non Chromebook Device](https://github.com/newbit1/rootCROS)
+* [rootCROS - A Script to root your Google Chrome OS installed on a non Chromebook Device](https://gitlab.com/newbit/rootCROS)
 
 ### XDA [GUIDE] How to [Build|Mod|Update] a custom AVD Kernel and its Modules
 * [[GUIDE][Build|Mod|Update][kernel-ranchu][goldfish][5.4][5.10][GKI][ramdisk.img][modules][rootAVD][Android 11(R) 12(S)][AVD][Google Play Store API]](https://forum.xda-developers.com/t/guide-build-mod-update-kernel-ranchu-goldfish-5-4-5-10-gki-ramdisk-img-modules-rootavd-android-11-r-12-s-avd-google-play-store-api.4220697)
@@ -375,17 +373,21 @@ rootAVD.bat system-images\android-25\google_apis_playstore\armeabi-v7a\ramdisk.i
 
 ### Change Logs
 
-#### [August 2023]
+#### [October 2023]
+* [General] - Moved to GitLab
 
+<details>
+<summary>Archive</summary>
+
+### Change Logs
+#### [August 2023]
 * [rootAVD.sh] - Added Pagesize Padding in the fakeboot.img
 * [rootAVD.sh] - Updated the creation of the fakeboot.img
 * [rootAVD.sh] - Added another way of checking the AVDs Internet connection
-
 #### [July 2023]
 * [rootAVD.bat] - Fixed file ListAllAVDs not found bug
 * [rootAVD.bat] - Fixed some errors with double spaces
 * [rootAVD.bat] - Added TestADBWORKDIR routine
-
 #### [June 2023]
 * [rootAVD.sh] - improved finding BusyBox routine, and once again
 * [rootAVD.sh] - rewritten the file and folder handling entirely, Darwin and Linux
@@ -396,10 +398,8 @@ rootAVD.bat system-images\android-25\google_apis_playstore\armeabi-v7a\ramdisk.i
 * [rootAVD.bat] - updated the TestADB routine, adb path will now be set automatically
 * [rootAVD.bat] - updated Exit calls
 * [General] - updated the README.md
-
 #### [May 2023]
 * [rootAVD.sh] - removed Busybox from Script
-
 #### [April 2023]
 * [General] - added link to X-plore file manager
 * [General] - added link to Magisk Single User Mod
@@ -408,11 +408,6 @@ rootAVD.bat system-images\android-25\google_apis_playstore\armeabi-v7a\ramdisk.i
 * [rootAVD.sh] - changed return 1 to return 0
 * [rootAVD.sh] - changed copy and move routine
 * [rootAVD.sh] - added support for ramdisk-qemu.img
-
-<details>
-<summary>Archive</summary>
-
-### Change Logs
 #### [December 2022]
 * [rootAVD.sh] - Fixed arithmetic syntax error in decompress_ramdisk
 #### [November 2022]
