@@ -137,11 +137,11 @@ IF "%ERRORLEVEL%"=="0" (
 	IF NOT %DEBUG% (
 		IF %RAMDISKIMG% (
 			call :pullfromAVD ramdiskpatched4AVD.img "%AVDPATHWITHRDFFILE%"
-			call :pullfromAVD Magisk.apk %ROOTAVD%\Apps\
+			call :pullfromAVD Magisk.apk "%ROOTAVD%" Apps
 			call :pullfromAVD Magisk.zip
 
 			IF %InstallPrebuiltKernelModules% (
-				call :pullfromAVD %BZFILE%
+				call :pullfromAVD "%BZFILE%"
 				call :InstallKernelModules
 			)
 
@@ -215,6 +215,7 @@ exit /B 0
 	SetLocal EnableDelayedExpansion
 	set SRC=%1
 	set DST=%2
+	set DST2=%3
 	set ADBPULLECHO=
 
 	setlocal enableDelayedExpansion
@@ -229,7 +230,16 @@ exit /B 0
 		set "DST=%%~nxi"
 	)
 
-	adb pull %ADBBASEDIR%/%SRC% %2 > tmpFile 2>&1
+	IF NOT "%DST2%"=="" (
+		adb pull %ADBBASEDIR%/%SRC% %DST2% > tmpFile 2>&1
+		set "DST=%DST2%"
+	)ELSE (
+		IF "%DST%"=="" (
+			adb pull %ADBBASEDIR%/%SRC% > tmpFile 2>&1
+		)
+		adb pull %ADBBASEDIR%/%SRC% %2 > tmpFile 2>&1
+	)
+
 	set /P ADBPULLECHO=<tmpFile
 	del tmpFile
 
