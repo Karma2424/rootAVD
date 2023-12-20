@@ -373,6 +373,9 @@ rootAVD.bat system-images\android-25\google_apis_playstore\armeabi-v7a\ramdisk.i
 
 ### Change Logs
 
+#### [December 2023]
+* [rootAVD.sh] - Fixed GetUSBHPmod Download Links and typos
+
 #### [Novemver 2023]
 * [rootAVD.bat] - Fixed another space issue
 

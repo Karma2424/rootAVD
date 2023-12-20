@@ -933,8 +933,9 @@ DownLoadFile() {
 }
 
 GetUSBHPmod() {
-	USBHPZSDDL="/sdcard/Download/usbhostpermissons.zip"
-	USBHPZ="https://github.com/newbit1/usbhostpermissons/releases/download/v1.0/usbhostpermissons.zip"
+	USBHPZSDDL="/sdcard/Download/usbhostpermissions-v1.0.1.zip"
+	USBHPZ="https://gitlab.com/newbit/usbhostpermissions/uploads/01a2e6d44206d7d17f3bea2042366479/usbhostpermissions-v1.0.1.zip"
+
 	if [ ! -e $USBHPZSDDL ]; then
 		echo "[*] Downloading USB HOST Permissions Module Zip"
 		$BB wget -q -O $USBHPZSDDL --no-check-certificate $USBHPZ
@@ -1125,7 +1126,7 @@ CheckAvailableMagisks() {
 			PrepBusyBoxAndMagisk
 		fi
 
-		# Call rootAVD with GetUSBHPmodZ to download the usbhostpermissons module
+		# Call rootAVD with GetUSBHPmodZ to download the usbhostpermissions module
 		$GetUSBHPmodZ && $AVDIsOnline && GetUSBHPmod
 	fi
 	export MAGISK_VER
@@ -2798,7 +2799,7 @@ ProcessArguments() {
 		PATCHFSTAB=true
 	fi
 
-	# Call rootAVD with GetUSBHPmodZ to download the usbhostpermissons module
+	# Call rootAVD with GetUSBHPmodZ to download the usbhostpermissions module
 	if [[ "$@" == *"GetUSBHPmodZ"* ]]; then
 		GetUSBHPmodZ=true
 	fi
