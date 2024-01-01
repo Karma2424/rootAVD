@@ -933,14 +933,16 @@ DownLoadFile() {
 }
 
 GetUSBHPmod() {
-	USBHPZSDDL="/sdcard/Download/usbhostpermissions-v1.0.1.zip"
-	USBHPZ="https://gitlab.com/newbit/usbhostpermissions/uploads/01a2e6d44206d7d17f3bea2042366479/usbhostpermissions-v1.0.1.zip"
+	USBHPZSDDL="/sdcard/Download"
+	USBHPZ="https://gitlab.com/newbit/usbhostpermissions/-/releases/permalink/latest/downloads/usbhostpermissions"
 
-	if [ ! -e $USBHPZSDDL ]; then
-		echo "[*] Downloading USB HOST Permissions Module Zip"
-		$BB wget -q -O $USBHPZSDDL --no-check-certificate $USBHPZ
-	else
+	if ls $USBHPZSDDL/usbhostpermissions*.zip 1> /dev/null 2>&1; then
 		echo "[*] USB HOST Permissions Module Zip is already present"
+	else
+		echo "[*] Downloading USB HOST Permissions Module Zip"
+		$BB wget --no-check-certificate $USBHPZ -S -o response.txt
+		USBHPZ=$(cat response.txt | $BB grep -Eo 'https://[^"]+\.(zip)')
+		$BB wget -q -P $USBHPZSDDL --no-check-certificate $USBHPZ
 	fi
 }
 
