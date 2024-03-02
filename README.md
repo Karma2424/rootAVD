@@ -379,6 +379,7 @@ rootAVD.bat system-images\android-25\google_apis_playstore\armeabi-v7a\ramdisk.i
 ### Change Logs
 
 #### [March 2024]
+* [rootAVD.sh] - Added PREINITDEVICE config
 * [rootAVD.bat] - Added support for elevated write permissions
 
 <details>

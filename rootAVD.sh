@@ -1681,23 +1681,30 @@ patching_ramdisk(){
 
 	echo "[-] Patching ramdisk"
 
-	echo "KEEPVERITY=$KEEPVERITY" > config
-	echo "KEEPFORCEENCRYPT=$KEEPFORCEENCRYPT" >> config
-	echo "RECOVERYMODE=$RECOVERYMODE" >> config
-
-	# actually here is the SHA of the bootimage generated
-	# we only have one file, so it could make sense
-	[ ! -z $SHA1 ] && echo "SHA1=$SHA1" >> config
-
 	# Compress to save precious ramdisk space
 
 	if $IS32BITONLY || ! $IS64BITONLY ; then
+		PREINITDEVICE=$($BASEDIR/magisk32 --preinit-device)
 		$BASEDIR/magiskboot compress=xz magisk32 magisk32.xz
 	fi
 
 	if $IS64BITONLY || ! $IS32BITONLY ; then
+		PREINITDEVICE=$($BASEDIR/magisk64 --preinit-device)
 		$BASEDIR/magiskboot compress=xz magisk64 magisk64.xz
 	fi
+
+	echo "KEEPVERITY=$KEEPVERITY" > config
+	echo "KEEPFORCEENCRYPT=$KEEPFORCEENCRYPT" >> config
+	echo "RECOVERYMODE=$RECOVERYMODE" >> config
+
+	if [ -n "$PREINITDEVICE" ]; then
+		echo "[*] Pre-init storage partition: $PREINITDEVICE"
+		echo "PREINITDEVICE=$PREINITDEVICE" >> config
+	fi
+
+	# actually here is the SHA of the bootimage generated
+	# we only have one file, so it could make sense
+	[ ! -z $SHA1 ] && echo "SHA1=$SHA1" >> config
 
 	$IS64BITONLY && SKIP32="#" || SKIP32=""
 	$IS64BIT && SKIP64="" || SKIP64="#"
