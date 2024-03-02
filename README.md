@@ -256,6 +256,11 @@ rootAVD.bat system-images\android-25\google_apis_playstore\armeabi-v7a\ramdisk.i
 * In both cases, the script will search in it for AVD system-images and adb binarys
 * `ANDROID_HOME` Sets the path to the SDK installation directory -> [AOSP Variables reference](https://developer.android.com/tools/variables#envar)
 
+### Notes for Microsoft Visual Studio AVDs
+* `ANDROID_HOME` needs to be set properly i.e. `set ANDROID_HOME="C:\Program Files (x86)\Android\android-sdk"`
+* `"C:\Program Files (x86)\Android\android-sdk"` needs elevated write permissions
+* the script will ask for user permissions, every time it needs to write to those locations
+
 ### Notes for Apk Developers
 * [How-To SU](http://su.chainfire.eu) from [Chainfire's](https://github.com/Chainfire) [libsuperuser](https://github.com/Chainfire/libsuperuser) - Guidelines for problem-free su usage (for Android Developers)
 * [TopJohnWu's libsu](https://github.com/topjohnwu/libsu) - An Android library providing a complete solution for apps using root permissions
@@ -373,19 +378,19 @@ rootAVD.bat system-images\android-25\google_apis_playstore\armeabi-v7a\ramdisk.i
 
 ### Change Logs
 
-#### [December 2023]
-* [rootAVD.sh] - Fixed GetUSBHPmod Download Links and typos
-
-#### [Novemver 2023]
-* [rootAVD.bat] - Fixed another space issue
-
-#### [October 2023]
-* [General] - Moved to GitLab
+#### [March 2024]
+* [rootAVD.bat] - Added support for elevated write permissions
 
 <details>
 <summary>Archive</summary>
 
 ### Change Logs
+#### [December 2023]
+* [rootAVD.sh] - Fixed GetUSBHPmod Download Links and typos
+#### [November 2023]
+* [rootAVD.bat] - Fixed another space issue
+#### [October 2023]
+* [General] - Moved to GitLab
 #### [August 2023]
 * [rootAVD.sh] - Added Pagesize Padding in the fakeboot.img
 * [rootAVD.sh] - Updated the creation of the fakeboot.img
