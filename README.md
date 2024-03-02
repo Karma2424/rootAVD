@@ -284,6 +284,13 @@ rootAVD.bat system-images\android-25\google_apis_playstore\armeabi-v7a\ramdisk.i
 * Confirmation
 	* On the Bottom Left Corner reads: **Safe mode**
 
+### Android TV Notes
+* An extra File Manager APK is required
+* Due to lack of functionality of the Android TV OS, special permissions are granted during
+* runtime, to all 3rd party installed APKs -> `appops set <package_name> MANAGE_EXTERNAL_STORAGE allow`
+* the Magisk APK doesn't show up in the Apps location
+	* but you can start Magisk from Terminal via `adb shell monkey -p com.topjohnwu.magisk -c android.intent.category.LAUNCHER 1`
+
 ### Automotive Notes
 * After patching the ramdisk.img and cycle power, switch to user 0 via `adb shell am switch-user 0`
 	* open the Magisk App and the **Requires Additional Setup** pops up -> reboot AVD
@@ -379,6 +386,8 @@ rootAVD.bat system-images\android-25\google_apis_playstore\armeabi-v7a\ramdisk.i
 ### Change Logs
 
 #### [March 2024]
+
+* [rootAVD.sh] - Added MANAGE_EXTERNAL_STORAGE allow
 * [rootAVD.sh] - Added PREINITDEVICE config
 * [rootAVD.bat] - Added support for elevated write permissions
 

@@ -1181,6 +1181,16 @@ InstallMagiskTemporarily() {
 	fi
 }
 
+AllowPermissionsTo3rdPartyAPKs(){
+	echo "[!] allowing MANAGE_EXTERNAL_STORAGE permissions to..."
+	local PKG_NAMES=$(pm list packages -3 | cut -f 2 -d ":") > /dev/null 2>&1
+	local PKG_NAME=""
+	for PKG_NAME in $PKG_NAMES; do
+		echo "[-] $PKG_NAME"
+		appops set $PKG_NAME MANAGE_EXTERNAL_STORAGE allow
+	done
+}
+
 RemoveTemporarilyMagisk() {
 
 	if ! $magiskispreinstalled; then
@@ -2551,6 +2561,7 @@ InstallMagiskToAVD() {
 	if $INEMULATOR; then
 		detect_ramdisk_compression_method
 		decompress_ramdisk
+		AllowPermissionsTo3rdPartyAPKs
 		if $FAKEBOOTIMG; then
 			process_fake_boot_img
 		fi
