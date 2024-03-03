@@ -20,21 +20,13 @@ A Script to...
 * a working Internet connection for the Menu
 * a command prompt / terminal is opened
 * `adb shell` will connect to the running AVD
+
 ### Use Case Examples
-#### on MacOS
-<img src="https://gitlab.com/newbit/video-files/-/blob/master/rootAVD_MacOS.gif" width="50%" height="50%"/>
-
-#### BlueStacks 4 on MacOS
-<img src="https://gitlab.com/newbit/video-files/-/blob/master/rootAVD_MacOS_BlueStacks.gif" width="50%" height="50%"/>
-
-#### on Windows
-<img src="https://gitlab.com/newbit/video-files/-/blob/master/rootAVD_Windows.gif" width="50%" height="50%"/>
-
-#### on Linux
-<img src="https://gitlab.com/newbit/video-files/-/blob/master/rootAVD_Linux.gif" width="50%" height="50%"/>
-
-#### Fake Boot.img on MacOS
-<img src="https://gitlab.com/newbit/video-files/-/blob/master/rootAVD_MacOS_FAKEBOOTIMG.gif" width="50%" height="50%"/>
+* [on MacOS](https://gitlab.com/newbit/video-files/-/blob/master/rootAVD_MacOS.gif)
+* [BlueStacks 4 on MacOS](https://gitlab.com/newbit/video-files/-/blob/master/rootAVD_MacOS_BlueStacks.gif)
+* [on Windows](https://gitlab.com/newbit/video-files/-/blob/master/rootAVD_Windows.gif)
+* [on Linux](https://gitlab.com/newbit/video-files/-/blob/master/rootAVD_Linux.gif)
+* [Fake Boot.img on MacOS](https://gitlab.com/newbit/video-files/-/blob/master/rootAVD_MacOS_FAKEBOOTIMG.gif)
 
 ### How to Install ADB (Android SDK Platform-Tools)
 * Open Android Studio -> SDK Manager -> Android SDK -> SDK Tools -> Check on **Android SDK Platform-Tools** -> Apply
