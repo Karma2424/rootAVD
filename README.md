@@ -247,7 +247,7 @@ rootAVD.bat system-images\android-25\google_apis_playstore\armeabi-v7a\ramdisk.i
 * Replace the Magisk.zip with the Flavour/Version of your choice
 * Tested Flavours are:
 	* Magisk from [topjohnwu](https://github.com/topjohnwu/magisk-files)
-	* Magisk Alpha from vvb2060 [vvb2060](https://xdaforums.com/t/discussion-magisk-alpha-public-released-fork-vvb2060.4424845/)
+	* Magisk Alpha from [vvb2060](https://xdaforums.com/t/discussion-magisk-alpha-public-released-fork-vvb2060.4424845/)
 	* Kitsune Magisk / Delta from [huskydg](https://github.com/HuskyDG/magisk-files/releases)
 
 ### ANDROID_HOME
