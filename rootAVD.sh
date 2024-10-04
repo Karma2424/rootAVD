@@ -67,6 +67,7 @@ copyARCHfiles() {
 	BINDIR=$BASEDIR/lib/$ABI
 	ASSETSDIR=$BASEDIR/assets
 	STUBAPK=false
+	INITLD=false
 
 	if [ -e $BINDIR/libstub.so ]; then
 		ABI=$ARCH32
@@ -87,6 +88,11 @@ copyARCHfiles() {
  		echo "[-] copy 'stub.apk' from $ASSETSDIR to $BASEDIR"
  		cp $ASSETSDIR/stub.apk $BASEDIR 2>/dev/null
  		STUBAPK=true
+ 	fi
+
+	if [ -e $BASEDIR/init-ld ]; then
+ 		echo "[*] init LD_PRELOAD is present"
+ 		INITLD=true
  	fi
 
 	chmod -R 755 $BASEDIR
@@ -1235,7 +1241,7 @@ FindWorkingBusyBox() {
 	for file in $(ls $BASEDIR/lib/*/*busybox*); do
 		chmod +x "$file"
 		bbversion=$($file | $file head -n 1)>/dev/null 2>&1
-		if [[ $bbversion == *"BusyBox"*"Magisk"*"multi-call"* ]]; then
+		if [[ $bbversion == *"BusyBox"* ]]; then
 			TestingBusyBoxVersion "$file"
 			RESULT="$?"
 			if [[ "$RESULT" == "0" ]]; then
@@ -1692,16 +1698,23 @@ patching_ramdisk(){
 	echo "[-] Patching ramdisk"
 
 	# Compress to save precious ramdisk space
+	if ! $INITLD ; then
+		if $IS32BITONLY || ! $IS64BITONLY ; then
+			PREINITDEVICE=$($BASEDIR/magisk32 --preinit-device)
+			$BASEDIR/magiskboot compress=xz magisk32 magisk32.xz
+		fi
 
-	if $IS32BITONLY || ! $IS64BITONLY ; then
-		PREINITDEVICE=$($BASEDIR/magisk32 --preinit-device)
-		$BASEDIR/magiskboot compress=xz magisk32 magisk32.xz
+		if $IS64BITONLY || ! $IS32BITONLY ; then
+			PREINITDEVICE=$($BASEDIR/magisk64 --preinit-device)
+			$BASEDIR/magiskboot compress=xz magisk64 magisk64.xz
+		fi
+	else
+		PREINITDEVICE=$($BASEDIR/magisk --preinit-device)
+		$BASEDIR/magiskboot compress=xz magisk magisk.xz
+		$BASEDIR/magiskboot compress=xz init-ld init-ld.xz
 	fi
 
-	if $IS64BITONLY || ! $IS32BITONLY ; then
-		PREINITDEVICE=$($BASEDIR/magisk64 --preinit-device)
-		$BASEDIR/magiskboot compress=xz magisk64 magisk64.xz
-	fi
+	$INITLD && SKIPLD="" || SKIPLD="#"
 
 	echo "KEEPVERITY=$KEEPVERITY" > config
 	echo "KEEPFORCEENCRYPT=$KEEPFORCEENCRYPT" >> config
@@ -1718,6 +1731,9 @@ patching_ramdisk(){
 
 	$IS64BITONLY && SKIP32="#" || SKIP32=""
 	$IS64BIT && SKIP64="" || SKIP64="#"
+
+	$INITLD && SKIP32="#"
+	$INITLD && SKIP64="#"
 
 	if $STUBAPK; then
 		echo "[!] stub.apk is present, compress and add it to ramdisk"
@@ -1740,13 +1756,14 @@ patching_ramdisk(){
 	"add 0750 init magiskinit" \
 	"$SKIP32 add 0644 overlay.d/sbin/magisk32.xz magisk32.xz" \
 	"$SKIP64 add 0644 overlay.d/sbin/magisk64.xz magisk64.xz" \
+	"$SKIPLD add 0644 overlay.d/sbin/magisk.xz magisk.xz" \
 	"$SKIPSTUB add 0644 overlay.d/sbin/stub.xz stub.xz" \
+	"$SKIPLD add 0644 overlay.d/sbin/init-ld.xz init-ld.xz" \
 	"patch" \
 	"backup ramdisk.cpio.orig" \
 	"mkdir 000 .backup" \
 	"add 000 .backup/.magisk config"
 }
-
 
 rename_copy_magisk() {
 	if ( "$MAGISKVERCHOOSEN" ); then
