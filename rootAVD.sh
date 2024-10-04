@@ -1027,9 +1027,9 @@ CheckAvailableMagisks() {
 	local TJWCOMMITSURL="topjohnwu/magisk-files/commits/master/"
 	local TJWBLOBURL="topjohnwu/magisk-files/blob/"
 
-	local VVB2060REPOURL="vvb2060/magisk_files/"
-	local VVB2060COMMITSURL="vvb2060/magisk_files/commits/alpha/"
-	local VVB2060BLOBURL="vvb2060/magisk_files/blob/"
+	#local VVB2060REPOURL="vvb2060/magisk_files/"
+	#local VVB2060COMMITSURL="vvb2060/magisk_files/commits/alpha/"
+	#local VVB2060BLOBURL="vvb2060/magisk_files/blob/"
 	local DLL_cnt=0
 
 	if [ -z $MAGISKVERCHOOSEN ]; then
@@ -1056,7 +1056,7 @@ CheckAvailableMagisks() {
 
 			FetchMagiskDLData $RAWGITHUB$TJWREPOURL"master/" "stable"
 			FetchMagiskDLData $RAWGITHUB$TJWREPOURL"master/" "canary"
-			FetchMagiskDLData $RAWGITHUB$VVB2060REPOURL"alpha/" "alpha"
+			#FetchMagiskDLData $RAWGITHUB$VVB2060REPOURL"alpha/" "alpha"
 
 			while :
 			do
@@ -1088,7 +1088,7 @@ CheckAvailableMagisks() {
 							rm *.txt > /dev/null 2>&1
 							FetchMagiskRLCommits $GITHUB $TJWCOMMITSURL $TJWBLOBURL "stable" $TJWREPOURL
 							FetchMagiskRLCommits $GITHUB $TJWCOMMITSURL $TJWBLOBURL "canary" $TJWREPOURL
-							FetchMagiskRLCommits $GITHUB $VVB2060COMMITSURL $VVB2060BLOBURL "alpha" $VVB2060REPOURL
+							#FetchMagiskRLCommits $GITHUB $VVB2060COMMITSURL $VVB2060BLOBURL "alpha" $VVB2060REPOURL
 						else
 							echo "invalid option $choice"
 						fi
@@ -2775,7 +2775,7 @@ echo "	"
 echo "${bold}Notes: rootAVD will${normal}"
 echo "- always create ${bold}.backup${normal} files of ${bold}ramdisk.img${normal} and ${bold}kernel-ranchu${normal}"
 echo "- ${bold}replace${normal} both when done patching"
-echo "- show a ${bold}Menu${normal}, to choose the Magisk Version ${bold}(Stable || Canary || Alpha)${normal}, if the AVD is ${bold}online${normal}"
+echo "- show a ${bold}Menu${normal}, to choose the Magisk Version ${bold}(Stable || Canary, if the AVD is ${bold}online${normal}"
 echo "- make the ${bold}choosen${normal} Magisk Version to its ${bold}local${normal}"
 echo "- install all APKs placed in the Apps folder"
 FindSystemImages

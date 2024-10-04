@@ -233,7 +233,7 @@ rootAVD.bat system-images\android-25\google_apis_playstore\armeabi-v7a\ramdisk.i
 
 ### Notes
 * 64 Bit Only Systems needs Magisk 23.x
-* In the Menu, you can choose between the newest Magisk, Canary, Stable and Alpha, Version.
+* In the Menu, you can choose between the newest Magisk, Canary and Stable, Version.
 * With the new Option `s`, you can see and download any other Versions of Magisk
 * Once choosen, the script will make that Version to your local one.
 * Prebuilt Kernel and Modules will be pulled from [AOSP](https://android.googlesource.com/kernel/prebuilts)
@@ -242,6 +242,13 @@ rootAVD.bat system-images\android-25\google_apis_playstore\armeabi-v7a\ramdisk.i
 * Magisk Versions >= 26.x can only be proper installed with the FAKEBOOTIMG argument
 	* due to the [New sepolicy.rule Implementation](https://github.com/topjohnwu/Magisk/releases/tag/v26.1)
 * Android 14 needs Magisk Version >= 26.x to be rooted
+
+### Notes on Magisk Versions
+* Replace the Magisk.zip with the Flavour/Version of your choice
+* Tested Flavours are:
+	* Magisk from [topjohnwu](https://github.com/topjohnwu/magisk-files)
+	* Magisk Alpha from vvb2060 [vvb2060](https://xdaforums.com/t/discussion-magisk-alpha-public-released-fork-vvb2060.4424845/)
+	* Kitsune Magisk / Delta from [huskydg](https://github.com/HuskyDG/magisk-files/releases)
 
 ### ANDROID_HOME
 * Default location can be overwritten by setting the `ANDROID_HOME` variable
@@ -376,9 +383,10 @@ rootAVD.bat system-images\android-25\google_apis_playstore\armeabi-v7a\ramdisk.i
 </details>
 
 ### Change Logs
+#### [Oct 2024]
+* [rootAVD.sh] - Removed Magisk Alpha as it moved to App Center and TG
 
 #### [March 2024]
-
 * [rootAVD.sh] - Added MANAGE_EXTERNAL_STORAGE allow
 * [rootAVD.sh] - Added PREINITDEVICE config
 * [rootAVD.bat] - Added support for elevated write permissions
@@ -510,11 +518,12 @@ rootAVD.bat system-images\android-25\google_apis_playstore\armeabi-v7a\ramdisk.i
 * [shakalaca MagiskOnEmulator](https://github.com/shakalaca/MagiskOnEmulator)
 * [huskydg @ xda-developers](https://forum.xda-developers.com/m/huskydg.11455139)
 * [huskydg MagiskOnEmu](https://github.com/HuskyDG/MagiskOnEmu)
+* [huskydg Kitsune Magisk Delta](https://github.com/HuskyDG/magisk-files/releases)
 * [Akianonymus _json_value](https://gist.github.com/cjus/1047794#gistcomment-3313785)
 * [Tad Fisher Android Nixpkgs](https://github.com/tadfisher/android-nixpkgs)
 * [Sébastien Corne magisk-single-user](https://github.com/seebz)
 * [remote-android Native Bridge Support in ReDroid](https://github.com/remote-android/redroid-doc/tree/master/native_bridge)
-* [vvb2060 Magisk Alpha](https://github.com/vvb2060/magisk_files/)
+* [vvb2060 Magisk Alpha](https://xdaforums.com/t/discussion-magisk-alpha-public-released-fork-vvb2060.4424845/)
 * [All-in-one Markdown editor by terrylinooo](https://markdown-editor.github.io/)
 * [Online Free WYSIWYG HTML Editor](https://www.htmeditor.com/author/)
 * [HTML Tidy - Online Markup Corrector](https://htmltidy.net)
