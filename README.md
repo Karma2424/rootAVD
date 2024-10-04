@@ -384,6 +384,7 @@ rootAVD.bat system-images\android-25\google_apis_playstore\armeabi-v7a\ramdisk.i
 
 ### Change Logs
 #### [Oct 2024]
+* [General] - Updated to Magisk v26.4
 * [rootAVD.sh] - Removed Magisk Alpha as it moved to App Center and TG
 
 #### [March 2024]
