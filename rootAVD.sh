@@ -2589,9 +2589,9 @@ InstallMagiskToAVD() {
 		if [ "$DERIVATE" == "BlueStacks" ]; then
 			InstallMagiskIntoBlueStacksRamdisk
 		else
-			if $PATCHEDBOOTIMAGE; then
+			if [ "$PATCHEDBOOTIMAGE" == "true" ] || [ "$DONT_PATCH_RAMDISK" == "true" ]; then
 				apply_ramdisk_hacks
-			elif ! $DONT_PATCH_RAMDISK; then
+			else
 				patching_ramdisk
 			fi
 		fi
