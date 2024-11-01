@@ -2591,7 +2591,7 @@ InstallMagiskToAVD() {
 		else
 			if $PATCHEDBOOTIMAGE; then
 				apply_ramdisk_hacks
-			else
+			elif ! $DONT_PATCH_RAMDISK; then
 				patching_ramdisk
 			fi
 		fi
@@ -2814,6 +2814,7 @@ ProcessArguments() {
 	BLUESTACKS=false
 	toggleRamdisk=false
 	FAKEBOOTIMG=false
+	DONT_PATCH_RAMDISK=false
 
 	# Call rootAVD with SOURCING if you just want to source it
 	# or export SOURCING=true if you are in crosh
@@ -2894,6 +2895,11 @@ ProcessArguments() {
 		FAKEBOOTIMG=true
 	fi
 
+	# Call rootAVD with DONT_PATCH_RAMDISK if you don't want to patch the ramdisk.img
+	if [[ "$@" == *"DONT_PATCH_RAMDISK"* ]]; then
+		DONT_PATCH_RAMDISK=true
+	fi
+
 	export DEBUG
 	export PATCHFSTAB
 	export GetUSBHPmodZ
@@ -2909,6 +2915,7 @@ ProcessArguments() {
 	export toggleRamdisk
 	export SOURCING
 	export FAKEBOOTIMG
+	export DONT_PATCH_RAMDISK
 }
 
 # Script Entry Point
@@ -2976,6 +2983,7 @@ if ( "$DEBUG" ); then
 	echo "toggleRamdisk: $toggleRamdisk"
 	echo "SOURCING: $SOURCING"
 	echo "FAKEBOOTIMG: $FAKEBOOTIMG"
+	echo "DONT_PATCH_RAMDISK: $DONT_PATCH_RAMDISK"
 fi
 
 if ( ! "$InstallApps" && ! "$BLUESTACKS"); then
